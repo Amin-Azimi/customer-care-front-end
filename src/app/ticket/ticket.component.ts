@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TicketsService } from '../api/tickets.service';
 import { Message, Ticket } from '../api/Message';
-import { catchError, Observable, switchMap, tap } from 'rxjs';
+import {catchError, Observable, shareReplay, switchMap, tap} from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -29,7 +29,8 @@ export class TicketComponent implements OnInit {
         } else {
           this.messageForm.enable();
         }
-      })
+      }),
+      shareReplay(1)
     );
     this.messages$ = this.ticket$.pipe(
       switchMap(({ id }) => this.api.getTicketMessages(id)),
@@ -60,7 +61,6 @@ export class TicketComponent implements OnInit {
 
   closeTicket(ticketId: number) {
     this.api.resolveTicket(ticketId).subscribe(t => {
-      this.ticketId = this._ticketId;
       this.snackBar.open("Ticket resolved", "Close", { duration: 3000 });
     });
   }
@@ -69,7 +69,6 @@ export class TicketComponent implements OnInit {
     const { text } = this.messageForm.value;
     const senderType = "operator", senderId = "operator1";
     this.api.addMessageToTicket(this._ticketId, { text: text!, senderType, senderId }).subscribe(message => {
-      this.ticketId = this._ticketId;
       this.snackBar.open("Message sent", "Close", { duration: 3000 });
     });
   }

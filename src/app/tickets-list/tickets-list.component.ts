@@ -39,6 +39,10 @@ export class TicketsListComponent implements OnInit {
   }
 
   openBulkSendDialog():void{
+    if(this.selectedTicketIds.size === 0){
+      console.error(`No tickets selected`);
+      return;
+    }
     const dialogRef = this.dialog.open(BulkSendDialogComponent,{
       width: '600px',
       data: { selectedTicketIds: Array.from(this.selectedTicketIds)}
