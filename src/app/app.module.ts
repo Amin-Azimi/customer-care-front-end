@@ -26,6 +26,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BulkSendHistoryComponent } from './bulk-send-history/bulk-send-history.component';
 import { MatTableModule } from '@angular/material/table';
 import { BulkSendDetailDialogComponent } from './bulk-send-detail-dialog/bulk-send-detail-dialog.component';
+import { TicketActionsComponent } from './ticket-actions/ticket-actions.component';
+import { TicketMessagesComponent } from './ticket-messages/ticket-messages.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { BulkSendDetailDialogComponent } from './bulk-send-detail-dialog/bulk-se
     BulkSendDialogComponent,
     BulkSendHistoryComponent,
     BulkSendDetailDialogComponent,
+    TicketActionsComponent,
+    TicketMessagesComponent,
   ],
   imports: [
     BrowserModule,

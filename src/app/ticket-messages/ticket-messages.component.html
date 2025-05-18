@@ -1,0 +1,25 @@
+<div class="messages">
+  <div
+    *ngFor="let message of messages$ | async; trackBy: trackByItems"
+    class="message"
+  >
+    <div class="message-sender">{{ message.senderType }}</div>
+    <div class="message-text">{{ message.text }}</div>
+    <div class="message-date">{{ message.createdAt | date : "medium" }}</div>
+  </div>
+</div>
+<mat-divider></mat-divider>
+<form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+  <mat-form-field>
+    <mat-label>Message</mat-label>
+    <input matInput formControlName="text" />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    type="submit"
+    color="primary"
+    [disabled]="messageForm.invalid || disabled"
+  >
+    Send
+  </button>
+</form>

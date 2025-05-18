@@ -1,0 +1,32 @@
+
+.message {
+  padding: 8px 16px;
+}
+
+form {
+  padding: 8px 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  flex: 1
+}
+
+.messages {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+form[formGroup] {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding: 16px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
