@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Bulk Send </h2>
+<mat-dialog-content>
+    <mat-label>Message:</mat-label>
+  <mat-form-field id="form-field">
+    <textarea matInput placeholder="Please enter your message" [(ngModel)]="message"   id="message" rows="6"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" [mat-dialog-close]="message"
+  (click)="onSendClick()" id="send">Send</button>
+</mat-dialog-actions>

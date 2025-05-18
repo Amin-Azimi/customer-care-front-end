@@ -1,0 +1,41 @@
+<!-- bulk-send-detail.component.html -->
+<h2 mat-dialog-title>Bulk Send Detail</h2>
+<mat-dialog-content *ngIf="bulkSendDetail | async as detail">
+  <table style="width: 100%; border-collapse: collapse">
+    <tr *ngIf="detail.id">
+      <td><strong>Job ID:</strong></td>
+      <td>{{ detail.id }}</td>
+    </tr>
+    <tr *ngIf="detail.message">
+      <td><strong>Message:</strong></td>
+      <td>{{ detail.message }}</td>
+    </tr>
+    <tr *ngIf="detail.status">
+      <td><strong>Status:</strong></td>
+      <td>{{ detail.status+' [Succeeded:'+detail.successCount+' | Failed:'+ detail.failureCount+'| Remaining'+detail.pendingCount+' ]' }}</td>
+    </tr>
+    <tr *ngIf="detail.updateAt">
+      <td><strong>Updated At:</strong></td>
+      <td>{{ detail.updateAt.toLocaleString("en-US") }}</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 24px">Tickets</h3>
+  <table style="width: 100%; border-collapse: collapse">
+    <tbody>
+      <tr *ngFor="let ticket of detail.tickets">
+        <td>{{ ticket.id }}</td>
+        <td>
+          <span [ngSwitch]="ticket.status">
+            <span *ngSwitchCase="'sent'" style="color: green">Sent</span>
+            <span *ngSwitchCase="'failed'" style="color: red">Failed</span>
+            <span *ngSwitchCase="'pending'" style="color: orange">Pending</span>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

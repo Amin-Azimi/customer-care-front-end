@@ -1,0 +1,34 @@
+#main-container {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+}
+
+#bottom-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin-top: var(--mat-toolbar-standard-height);
+}
+
+#tickets-list {
+  width: 350px;
+}
+
+#ticket {
+  flex: 1;
+}
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 42;
+}
+
+.right-align {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 15px;
+}

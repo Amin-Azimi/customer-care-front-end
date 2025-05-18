@@ -1,0 +1,17 @@
+<div id="main-container">
+  <mat-toolbar class="mat-elevation-z2" color="primary">
+    <span>Customer Care System</span>
+    <div class="right-align">
+      <button mat-button routerLink="bulk-sends">Bulk sends history</button>
+    </div>
+  </mat-toolbar>
+  <div id="bottom-container">
+    <div id="tickets-list">
+      <app-tickets-list></app-tickets-list>
+    </div>
+    <mat-divider vertical></mat-divider>
+    <div id="ticket">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
